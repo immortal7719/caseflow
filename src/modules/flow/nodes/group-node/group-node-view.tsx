@@ -32,7 +32,7 @@ export function GroupNodeView({
             <GripIcon className="h-5 w-5 text-muted-foreground/70" />
           </div>
         </CardHeader>
-        <CardContent className="nodrag nopan scrollbar-thin scrollbar-thumb-zinc-950 scrollbar-track-zinc-50 flex-1 overflow-y-auto p-3">
+        <CardContent className="nodrag nopan scrollbar-thin scrollbar-thumb-zinc-950 scrollbar-track-zinc-50 flex-1 overflow-y-auto overflow-x-hidden p-3">
           <ClueList
             className="max-h-[400px]"
             clues={data.clues || []}

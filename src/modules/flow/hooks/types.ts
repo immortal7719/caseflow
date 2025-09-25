@@ -7,6 +7,7 @@ export type ClueItem = {
   id: string;
   index: number;
   groupId: string;
+  clue?: import("../types/clue").Clue;
 };
 
 export type NodeItem = {

@@ -1,8 +1,11 @@
+import { useRef } from "react";
 import type { ClueItem as ClueItemType } from "../../hooks/types";
+import { useDropZone } from "../../hooks/use-drop-zone";
 import type { ReorderCluesParams } from "../../types/reorder";
 
 type UseClueListModel = {
   onReorderClues: (params: ReorderCluesParams) => void;
+  groupId: string;
 };
 
 type HandlePlaceholderDropParams = {
@@ -11,7 +14,12 @@ type HandlePlaceholderDropParams = {
   draggedItem: ClueItemType;
 };
 
-export function useClueListModel({ onReorderClues }: UseClueListModel) {
+export function useClueListModel({
+  groupId,
+  onReorderClues,
+}: UseClueListModel) {
+  const emptyAreaRef = useRef<HTMLDivElement>(null);
+
   const handleItemDrop = (
     draggedItem: ClueItemType,
     targetItem: ClueItemType
@@ -41,5 +49,20 @@ export function useClueListModel({ onReorderClues }: UseClueListModel) {
     });
   };
 
-  return { handleItemDrop, handlePlaceholderDrop };
+  const { isOver, canDrop, drop } = useDropZone(
+    handlePlaceholderDrop,
+    0,
+    groupId
+  );
+
+  drop(emptyAreaRef);
+
+  const isEmptyAreaActive = isOver && canDrop;
+
+  return {
+    emptyAreaRef,
+    handleItemDrop,
+    isEmptyAreaActive,
+    handlePlaceholderDrop,
+  };
 }

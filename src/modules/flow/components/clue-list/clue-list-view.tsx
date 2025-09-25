@@ -1,10 +1,11 @@
 import { Plus } from "lucide-react";
-import type { ComponentProps } from "react";
+import { type ComponentProps, Fragment } from "react";
 import { Button } from "@/core/components/ui/button";
 import { cn } from "@/core/lib/utils";
 import type { Clue } from "../../types/clue";
 import { ClueItem } from "../clue-item/clue-item";
 import { DropPlaceholder } from "../clue-item/fragments";
+import { DropZoneOverlay } from "../drop-zone-overlay";
 import { SaveClueButton } from "../save-clue-button";
 import type { useClueListModel } from "./clue-list-model";
 
@@ -17,7 +18,9 @@ type ClueListViewProps = ReturnType<typeof useClueListModel> &
 export function ClueListView({
   clues,
   groupId,
+  emptyAreaRef,
   handleItemDrop,
+  isEmptyAreaActive,
   handlePlaceholderDrop,
   ...props
 }: ClueListViewProps) {
@@ -39,12 +42,23 @@ export function ClueListView({
         </SaveClueButton>
       </div>
 
-      <div className="space-y-2">
-        {clues.length === 0 ? (
-          <div className="rounded-lg border border-muted-foreground/25 border-dashed p-8 text-center">
+      <div>
+        {clues.length === 0 && (
+          <div
+            className={cn(
+              "relative rounded-lg border border-dashed p-8 text-center transition-all duration-200"
+            )}
+            ref={emptyAreaRef}
+          >
+            <DropZoneOverlay
+              isActive={isEmptyAreaActive}
+              text="Soltar pista aqui"
+            />
+
             <p className="text-muted-foreground text-sm">
               Nenhuma pista adicionada ainda
             </p>
+
             <SaveClueButton groupId={groupId}>
               <Button className="mt-2 gap-1" size="sm" variant="outline">
                 <Plus className="h-3 w-3" />
@@ -52,7 +66,9 @@ export function ClueListView({
               </Button>
             </SaveClueButton>
           </div>
-        ) : (
+        )}
+
+        {clues.length > 0 && (
           <>
             <DropPlaceholder
               groupId={groupId}
@@ -61,7 +77,7 @@ export function ClueListView({
             />
 
             {clues.map((clue, index) => (
-              <div key={clue.id}>
+              <Fragment key={clue.id}>
                 <ClueItem
                   clue={clue}
                   groupId={groupId}
@@ -74,7 +90,7 @@ export function ClueListView({
                   insertIndex={index + 1}
                   onDrop={handlePlaceholderDrop}
                 />
-              </div>
+              </Fragment>
             ))}
           </>
         )}

@@ -17,7 +17,7 @@ export function DropPlaceholderView({
       {...props}
       className={cn(
         "transition-all duration-200",
-        isActive ? "h-12 opacity-100" : "h-2 opacity-0 hover:opacity-100",
+        isActive ? "h-12 opacity-100" : "h-2 opacity-0",
         props.className
       )}
       ref={ref}

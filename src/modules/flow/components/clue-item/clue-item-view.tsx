@@ -1,32 +1,17 @@
-import { Edit, FileText, Image, Video, Volume2 } from "lucide-react";
+import { Edit } from "lucide-react";
 import { memo } from "react";
 import { Button } from "@/core/components/ui/button";
 import { Card, CardContent } from "@/core/components/ui/card";
 import { cn } from "@/core/lib/utils";
-import type { Clue } from "../../types/clue";
 import { DeleteClueButton } from "../delete-clue-button";
+import { DropZoneOverlay } from "../drop-zone-overlay";
 import { SaveClueButton } from "../save-clue-button";
+import { ClueIcon } from "../shared/clue-icon";
+import { CluePreview } from "../shared/clue-preview";
 import type { useClueItemModel } from "./clue-item-model";
 import { ClueContent } from "./fragments/clue-content";
 
 type ClueItemProps = ReturnType<typeof useClueItemModel>;
-
-const ClueIcon = ({ type }: { type: Clue["type"] }) => {
-  const iconProps = { className: "h-4 w-4" };
-
-  switch (type) {
-    case "text":
-      return <FileText {...iconProps} />;
-    case "image":
-      return <Image {...iconProps} />;
-    case "video":
-      return <Video {...iconProps} />;
-    case "audio":
-      return <Volume2 {...iconProps} />;
-    default:
-      return <FileText {...iconProps} />;
-  }
-};
 
 function ClueItemViewComponent({
   ref,
@@ -38,15 +23,9 @@ function ClueItemViewComponent({
 }: ClueItemProps) {
   if (isPreview) {
     return (
-      <Card className="rotate-2 scale-105 border-primary opacity-90 shadow-lg">
-        <CardContent className="space-y-2 p-3">
-          <div className="flex min-w-0 flex-1 items-center gap-2">
-            <ClueIcon type={clue.type} />
-            <h4 className="truncate font-medium text-sm">{clue.title}</h4>
-          </div>
-          <ClueContent clue={clue} />
-        </CardContent>
-      </Card>
+      <CluePreview clue={clue} variant="preview">
+        <ClueContent clue={clue} />
+      </CluePreview>
     );
   }
 
@@ -56,7 +35,7 @@ function ClueItemViewComponent({
         aria-describedby={`clue-${clue.id}-content`}
         aria-label={`Pista: ${clue.title}`}
         className={cn(
-          "group relative cursor-grab p-0 transition-all duration-300 focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2",
+          "group relative cursor-grab p-0 transition-all duration-300 focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/50",
           "border-2 hover:shadow-md",
           isBeingDragged && "rotate-1 scale-105 opacity-50",
           isDropTarget && "border-2 border-primary bg-primary/10 shadow-lg"
@@ -89,13 +68,7 @@ function ClueItemViewComponent({
             )}
           </div>
 
-          {isDropTarget && (
-            <div className="absolute inset-0 flex items-center justify-center rounded-xl border-2 border-primary border-dashed bg-primary/5">
-              <span className="font-medium text-primary text-sm">
-                Soltar aqui
-              </span>
-            </div>
-          )}
+          <DropZoneOverlay isActive={isDropTarget} text="Soltar aqui" />
 
           <div id={`clue-${clue.id}-content`}>
             {clue.description && (

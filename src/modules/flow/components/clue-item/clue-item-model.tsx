@@ -25,6 +25,7 @@ export function useClueItemModel({
     index,
     groupId,
     id: clue.id,
+    clue,
   };
 
   const { isDragging, drag } = useDragClue(dragItem);

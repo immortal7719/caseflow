@@ -13,7 +13,7 @@ export function DraggableNodeView({
     <div
       aria-describedby={`${node.id}-description`}
       className={cn(
-        "flex cursor-grab select-none items-center gap-2 rounded-md border border-gray-200 bg-white px-3 py-2 text-sm shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 active:cursor-grabbing sm:gap-3 sm:px-4",
+        "flex cursor-grab select-none items-center gap-2 rounded-md border border-gray-200 bg-white px-3 py-2 text-sm shadow-sm focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/50 hover:bg-gray-50 active:cursor-grabbing sm:gap-3 sm:px-4",
         isDragging && "opacity-50"
       )}
       ref={ref}

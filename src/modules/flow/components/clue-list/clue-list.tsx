@@ -12,7 +12,12 @@ type ClueListProps = Omit<
   ModelProps;
 
 function ClueListComponent({ onReorderClues, ...props }: ClueListProps) {
-  return <ClueListView {...useClueListModel({ onReorderClues })} {...props} />;
+  return (
+    <ClueListView
+      {...useClueListModel({ onReorderClues, groupId: props.groupId })}
+      {...props}
+    />
+  );
 }
 
 export const ClueList = memo(ClueListComponent);

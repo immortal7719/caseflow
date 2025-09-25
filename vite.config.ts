@@ -16,4 +16,50 @@ export default defineConfig({
       "@": resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      external: [
+        // Suprimir warnings de módulos Node.js externalizados
+        /^node:/,
+        /^fs$/,
+        /^path$/,
+        /^util$/,
+        /^os$/,
+        /^events$/,
+        /^stream$/,
+        /^crypto$/,
+        /^module$/,
+        /^worker_threads$/,
+        /^child_process$/,
+        /^tty$/,
+        /^assert$/,
+        /^url$/,
+      ],
+      output: {
+        manualChunks: {
+          "radix-vendor": [
+            "@radix-ui/react-alert-dialog",
+            "@radix-ui/react-dialog",
+            "@radix-ui/react-label",
+            "@radix-ui/react-select",
+            "@radix-ui/react-slot",
+          ],
+
+          "reactflow-vendor": ["@xyflow/react", "@xyflow/system"],
+
+          "dnd-vendor": ["react-dnd", "react-dnd-html5-backend"],
+
+          "forms-vendor": ["react-hook-form", "@hookform/resolvers", "zod"],
+
+          "ui-vendor": [
+            "class-variance-authority",
+            "clsx",
+            "tailwind-merge",
+            "lucide-react",
+            "sonner",
+          ],
+        },
+      },
+    },
+  },
 });
