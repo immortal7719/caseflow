@@ -20,8 +20,20 @@ export function BaseFlowView({
 }: BaseFlowView) {
   return (
     <ClueReorderProvider handleGlobalReorderClues={handleGlobalReorderClues}>
-      <div className="h-full w-full" ref={flowRef}>
+      <div
+        aria-describedby="flow-instructions"
+        aria-label="Canvas de investigação criminal interativo"
+        className="h-full w-full"
+        ref={flowRef}
+        role="application"
+      >
+        <span className="sr-only" id="flow-instructions">
+          Use as setas do teclado para navegar, Delete ou Backspace para remover
+          elementos selecionados. Arraste elementos para reorganizar o fluxo de
+          investigação.
+        </span>
         <ReactFlow
+          aria-label="Fluxo de investigação"
           defaultEdgeOptions={defaultEdgeOptions}
           deleteKeyCode={["Delete", "Backspace"]}
           edges={edges}

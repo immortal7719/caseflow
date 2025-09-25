@@ -48,7 +48,9 @@ export function ClueFormView({
   return (
     <FormProvider {...form}>
       <form
+        aria-label={isEditing ? "Editar pista" : "Adicionar nova pista"}
         className="space-y-4"
+        noValidate
         onSubmit={form.handleSubmit(handleFormSubmit)}
       >
         <FormField

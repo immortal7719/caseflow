@@ -10,9 +10,12 @@ export function FlowScreen() {
       <DndProvider backend={HTML5Backend}>
         <div className="flex h-screen flex-col">
           <FlowHeader />
-          <div className="flex-1">
+          <main
+            aria-label="Área principal de investigação criminal"
+            className="flex-1"
+          >
             <CriminalInvestigationFlow />
-          </div>
+          </main>
         </div>
       </DndProvider>
     </ReactFlowProvider>

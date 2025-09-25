@@ -14,10 +14,13 @@ const nodes: NodeItem[] = [
 
 export function NodeList() {
   return (
-    <div className="flex items-center gap-2">
+    <fieldset
+      aria-label="Ferramentas para criar grupos de evidências"
+      className="flex items-center gap-2 border-none p-0"
+    >
       {nodes.map((node) => (
         <DraggableNode key={node.id} node={node} />
       ))}
-    </div>
+    </fieldset>
   );
 }
