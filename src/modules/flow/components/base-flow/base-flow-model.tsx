@@ -13,6 +13,7 @@ import {
 } from "@xyflow/react";
 import { useCallback, useRef } from "react";
 import "@xyflow/react/dist/style.css";
+import { makeFlow } from "@/test/factories/make-flow";
 import type { NodeItem } from "../../hooks/types";
 import { useDropNode } from "../../hooks/use-drop-node";
 import { useUndoRedo } from "../../hooks/use-undo-redo";
@@ -26,73 +27,10 @@ import {
   validateNodesAndClues,
 } from "./base-flow.utils";
 
-const initialNodes: Node[] = [
-  {
-    id: "group1",
-    type: "evidence",
-    position: { x: 100, y: 100 },
-    data: {
-      title: "Evidências Físicas",
-      clues: [
-        {
-          id: "clue1",
-          title: "Impressão digital na porta",
-          description:
-            "Impressão digital encontrada na maçaneta da porta principal",
-          type: "text" as const,
-          content:
-            "Impressão digital parcial encontrada na superfície metálica da maçaneta. Padrão compatível com mão direita, indicador. Qualidade suficiente para comparação.",
-          order: 0,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          id: "clue2",
-          title: "Foto da cena do crime",
-          description: "Fotografia geral da sala onde ocorreu o incidente",
-          type: "image" as const,
-          url: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400",
-          alt: "Sala com móveis desarrumados",
-          fileName: "cena_crime_001.jpg",
-          order: 1,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-      ],
-    } as GroupNodeData,
-  },
-  {
-    id: "group2",
-    type: "evidence",
-    position: { x: 500, y: 100 },
-    data: {
-      title: "Depoimentos",
-      clues: [
-        {
-          id: "clue3",
-          title: "Testemunha viu carro vermelho",
-          description: "Relato da Sra. Maria sobre veículo suspeito",
-          type: "text" as const,
-          content:
-            "Por volta das 20h30, a testemunha observou um carro vermelho, possivelmente um sedan, estacionado em frente ao local por aproximadamente 15 minutos.",
-          order: 0,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-      ],
-    } as GroupNodeData,
-  },
-];
+const flow = makeFlow();
 
-const initialEdges: Edge[] = [
-  {
-    id: "group1-group2",
-    source: "group1",
-    target: "group2",
-    sourceHandle: "evidence-group1-source-right",
-    targetHandle: "evidence-group2-target-left",
-  },
-];
+const initialNodes: Node[] = flow.nodes;
+const initialEdges: Edge[] = flow.edges;
 
 export function useBaseFlowModel() {
   const flowRef = useRef<HTMLDivElement>(null);

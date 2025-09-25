@@ -54,14 +54,14 @@ function ClueItemViewComponent({
     <div ref={ref}>
       <Card
         className={cn(
-          "group relative cursor-grab transition-all duration-300",
+          "group relative cursor-grab p-0 transition-all duration-300",
           "border-2 hover:shadow-md",
           isBeingDragged && "rotate-1 scale-105 opacity-50",
           isDropTarget && "border-2 border-primary bg-primary/10 shadow-lg"
         )}
       >
         <CardContent className="flex flex-col gap-3 p-3">
-          <div className="flex items-start justify-between">
+          <div className="flex items-center justify-between">
             <div className="flex min-w-0 flex-1 items-center gap-2">
               <ClueIcon type={clue.type} />
               <h4 className="truncate font-medium text-sm">{clue.title}</h4>

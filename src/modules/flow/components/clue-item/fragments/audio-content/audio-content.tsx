@@ -1,4 +1,3 @@
-import { Volume2 } from "lucide-react";
 import type { AudioClue } from "@/modules/flow/types/clue";
 
 type AudioContentProps = {
@@ -8,9 +7,20 @@ type AudioContentProps = {
 export function AudioContent({ clue }: AudioContentProps) {
   return (
     <div className="space-y-2">
-      <div className="flex h-16 items-center justify-center rounded border bg-muted">
-        <Volume2 className="h-8 w-8 text-muted-foreground" />
-      </div>
+      {clue.url && (
+        <audio
+          aria-label={
+            clue.fileName ? `Audio: ${clue.fileName}` : "Audio player"
+          }
+          className="w-full"
+          controls={true}
+          preload="none"
+          src={clue.url}
+        >
+          <track kind="captions" />
+          Your browser does not support the audio element.
+        </audio>
+      )}
       <div className="flex justify-between text-muted-foreground text-xs">
         {clue.fileName && <span>{clue.fileName}</span>}
         {clue.duration && <span>{Math.round(clue.duration)}s</span>}

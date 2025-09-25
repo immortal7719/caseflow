@@ -5,7 +5,5 @@ type TextContentProps = {
 };
 
 export function TextContent({ clue }: TextContentProps) {
-  return (
-    <p className="line-clamp-3 text-muted-foreground text-sm">{clue.content}</p>
-  );
+  return <p className="text-muted-foreground text-sm">{clue.content}</p>;
 }

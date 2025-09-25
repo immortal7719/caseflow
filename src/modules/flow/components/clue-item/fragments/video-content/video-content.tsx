@@ -9,9 +9,12 @@ export function VideoContent({ clue }: VideoContentProps) {
     <div className="space-y-2">
       {clue.url && (
         <video
-          className="h-24 w-full rounded border object-cover"
-          controls={false}
+          className="h-60 w-full rounded border object-cover"
+          controls={true}
+          controlsList="nodownload"
           muted
+          poster="/video-poster.webp"
+          preload="metadata"
           src={clue.url}
         />
       )}

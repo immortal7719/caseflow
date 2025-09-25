@@ -10,7 +10,7 @@ export function ImageContent({ clue }: ImageContentProps) {
       {clue.url && (
         <div
           aria-label={clue.alt || clue.title}
-          className="h-24 w-full rounded border bg-center bg-cover"
+          className="h-60 w-full rounded border bg-center bg-cover"
           role="img"
           style={{ backgroundImage: `url(${clue.url})` }}
         />

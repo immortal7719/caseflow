@@ -9,6 +9,8 @@ import type { GroupNodeType } from "./types";
 type GroupNodeViewProps = ReturnType<typeof useGroupNodeModel> &
   NodeProps<GroupNodeType>;
 
+const HANDLE_STYLE = { height: 10, width: 10 };
+
 export function GroupNodeView({
   id,
   data,
@@ -18,7 +20,7 @@ export function GroupNodeView({
 }: GroupNodeViewProps) {
   return (
     <>
-      <Card className="nowheel flex h-full w-[300px] cursor-default flex-col gap-0 bg-card/95 p-0 shadow-lg backdrop-blur-sm">
+      <Card className="nowheel flex h-full w-[500px] cursor-default flex-col gap-0 bg-card/95 p-0 shadow-lg backdrop-blur-sm">
         <CardHeader className="cursor-grab rounded-t-lg bg-secondary/50 p-3">
           <div className="flex items-center justify-between">
             <InlineEditableTitle
@@ -41,9 +43,18 @@ export function GroupNodeView({
       </Card>
 
       <Handle
+        id={`evidence-${id}-target-top`}
+        isConnectable={isConnectable}
+        position={Position.Top}
+        style={HANDLE_STYLE}
+        type="target"
+      />
+
+      <Handle
         id={`evidence-${id}-target-left`}
         isConnectable={isConnectable}
         position={Position.Left}
+        style={HANDLE_STYLE}
         type="target"
       />
 
@@ -51,6 +62,15 @@ export function GroupNodeView({
         id={`evidence-${id}-source-right`}
         isConnectable={isConnectable}
         position={Position.Right}
+        style={HANDLE_STYLE}
+        type="source"
+      />
+
+      <Handle
+        id={`evidence-${id}-source-bottom`}
+        isConnectable={isConnectable}
+        position={Position.Bottom}
+        style={HANDLE_STYLE}
         type="source"
       />
     </>
