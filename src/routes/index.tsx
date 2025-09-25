@@ -1,14 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Flow } from "@/modules/flow/components/flow";
+import { FlowScreen } from "@/modules/flow/screens/flow-screen";
 
 export const Route = createFileRoute("/")({
   component: App,
 });
 
 function App() {
-  return (
-    <div className="text-center">
-      <Flow />
-    </div>
-  );
+  return <FlowScreen />;
 }
