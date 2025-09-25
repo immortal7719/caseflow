@@ -17,11 +17,12 @@ export function DropZoneOverlay({
       className={cn(
         [
           "absolute inset-0 flex items-center justify-center rounded-lg border-2 border-primary border-dashed bg-primary/20 opacity-0",
-          "transition-opacity duration-200",
-          isActive && "z-10 opacity-100",
+          "pointer-events-none transition-opacity duration-200",
+          isActive && "opacity-100",
         ],
         props.className
       )}
+      inert
     >
       <span className="font-medium text-primary text-sm">{text}</span>
     </div>
