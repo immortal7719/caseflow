@@ -72,7 +72,7 @@ function ClueItemViewComponent({
 
           <div id={`clue-${clue.id}-content`}>
             {clue.description && (
-              <p className="line-clamp-2 text-muted-foreground text-xs">
+              <p className="mb-1 line-clamp-2 text-muted-foreground text-xs">
                 {clue.description}
               </p>
             )}
