@@ -28,38 +28,50 @@ export function useClueFormModel({
 
   const watchedType = form.watch("type");
 
+  const createClue = (
+    nodeData: GroupNodeData,
+    extractedData: ReturnType<typeof extractClueData>
+  ) => {
+    const newClue: Clue = {
+      id: getId(),
+      ...extractedData,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
+
+    updateNodeData(groupId, {
+      clues: [...nodeData.clues, newClue],
+    });
+  };
+
+  const editClue = (
+    nodeData: GroupNodeData,
+    extractedData: ReturnType<typeof extractClueData>
+  ) => {
+    const updatedClue: Clue = {
+      ...initialData,
+      ...extractedData,
+      updatedAt: new Date(),
+    } as Clue;
+
+    const updatedClues = nodeData.clues.map((clue) =>
+      clue.id === updatedClue.id ? updatedClue : clue
+    );
+
+    updateNodeData(groupId, {
+      clues: updatedClues,
+    });
+  };
+
   const handleFormSubmit = (data: ClueFormData) => {
     const node = getNode(groupId);
-
     const nodeData = node?.data as GroupNodeData;
     const extractedData = extractClueData(data);
 
     if (isEditing) {
-      const updatedClue = {
-        ...initialData,
-        ...extractedData,
-        updatedAt: new Date(),
-      };
-
-      const updatedClues = nodeData.clues.map((clue) =>
-        clue.id === updatedClue.id ? updatedClue : clue
-      );
-
-      updateNodeData(groupId, {
-        clues: updatedClues,
-      });
+      editClue(nodeData, extractedData);
     } else {
-      const newClue = {
-        id: getId(),
-        ...extractedData,
-        order: nodeData.clues.length,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      };
-
-      updateNodeData(groupId, {
-        clues: [...nodeData.clues, newClue],
-      });
+      createClue(nodeData, extractedData);
     }
 
     handleGoBack?.();

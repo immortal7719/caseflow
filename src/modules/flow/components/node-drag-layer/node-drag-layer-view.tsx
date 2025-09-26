@@ -4,7 +4,11 @@ import type { useNodeDragLayerModel } from "./node-drag-layer-model";
 
 type NodeDragLayerViewProps = ReturnType<typeof useNodeDragLayerModel>;
 
-function NodeDragPreview({ item }: { item: NodeItem }) {
+type NodeDragPreviewProps = {
+  item: NodeItem;
+};
+
+function NodeDragPreview({ item }: NodeDragPreviewProps) {
   const IconComponent = item.type === "evidence" ? Group : Group;
 
   return (

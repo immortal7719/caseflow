@@ -1,5 +1,6 @@
 import { Handle, type NodeProps, Position } from "@xyflow/react";
 import { GripIcon } from "lucide-react";
+import type { CSSProperties } from "react";
 import { Card, CardContent, CardHeader } from "@/core/components/ui/card";
 import { ClueList } from "../../components/clue-list";
 import { InlineEditableTitle } from "../../components/inline-editable-title";
@@ -9,7 +10,7 @@ import type { GroupNodeType } from "./types";
 type GroupNodeViewProps = ReturnType<typeof useGroupNodeModel> &
   NodeProps<GroupNodeType>;
 
-const HANDLE_STYLE = { height: 10, width: 10 };
+const HANDLE_STYLE: CSSProperties = { height: 10, width: 10 };
 
 export function GroupNodeView({
   id,

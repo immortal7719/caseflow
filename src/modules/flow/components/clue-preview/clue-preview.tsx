@@ -25,9 +25,9 @@ type CluePreviewProps = {
 
 export function CluePreview({
   clue,
+  variant,
   children,
   className,
-  variant,
 }: CluePreviewProps) {
   return (
     <Card className={cn(cluePreviewVariants({ variant }), className)}>

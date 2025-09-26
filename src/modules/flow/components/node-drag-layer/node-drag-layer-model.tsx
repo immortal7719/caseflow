@@ -8,20 +8,16 @@ export function useNodeDragLayerModel() {
     useDragLayer((monitor) => ({
       item: monitor.getItem() as NodeItem,
       itemType: monitor.getItemType(),
-      initialOffset: monitor.getInitialSourceClientOffset(),
-      currentOffset: monitor.getSourceClientOffset(),
       isDragging: monitor.isDragging(),
+      currentOffset: monitor.getSourceClientOffset(),
+      initialOffset: monitor.getInitialSourceClientOffset(),
     }));
 
   const getItemStyles = (
     initOffset: { x: number; y: number } | null,
     currOffset: { x: number; y: number } | null
   ) => {
-    if (!initOffset) {
-      return { display: "none" };
-    }
-
-    if (!currOffset) {
+    if (!(initOffset && currOffset)) {
       return { display: "none" };
     }
 
