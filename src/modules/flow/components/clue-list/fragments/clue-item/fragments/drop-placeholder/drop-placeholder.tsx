@@ -26,9 +26,4 @@ function DropPlaceholderComponent({
   );
 }
 
-export const DropPlaceholder = memo(
-  DropPlaceholderComponent,
-  (prevProps, nextProps) =>
-    prevProps.groupId === nextProps.groupId &&
-    prevProps.insertIndex === nextProps.insertIndex
-);
+export const DropPlaceholder = memo(DropPlaceholderComponent);
