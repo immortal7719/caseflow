@@ -1,4 +1,4 @@
-![CaseFlow Screenshot](.github/print-1.png)
+![CaseFlow Screenshot](.github/print-1.webp)
 
 # 🔍 CaseFlow (English)
 
