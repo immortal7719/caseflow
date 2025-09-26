@@ -7,7 +7,7 @@ export function FlowHeader() {
       <div className="hidden items-center justify-between sm:flex">
         <div className="flex items-center gap-4">
           <h1 className="font-semibold text-gray-900 text-lg" id="main-heading">
-            Investigação Criminal
+            CaseFlow
           </h1>
           <hr className="h-6 w-px border-0 border-gray-300 border-l" />
           <nav aria-label="Ferramentas de evidência">
@@ -26,7 +26,7 @@ export function FlowHeader() {
             className="font-semibold text-gray-900 text-lg"
             id="main-heading-mobile"
           >
-            Investigação Criminal
+            CaseFlow
           </h1>
           <div aria-label="Ações do fluxo" role="toolbar">
             <ExportFlowButton />
