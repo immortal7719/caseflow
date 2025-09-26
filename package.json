@@ -2,6 +2,7 @@
   "name": "caseflow",
   "private": true,
   "type": "module",
+  "license": "MIT",
   "scripts": {
     "dev": "vite --port 3000",
     "start": "vite --port 3000",
