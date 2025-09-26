@@ -17,7 +17,7 @@ export function VideoFields() {
       <FormField
         control={control}
         defaultValue=""
-        name="url"
+        name="video.url"
         render={({ field }) => (
           <FormItem>
             <FormLabel>URL do Vídeo</FormLabel>
@@ -35,7 +35,7 @@ export function VideoFields() {
       <FormField
         control={control}
         defaultValue=""
-        name="fileName"
+        name="video.fileName"
         render={({ field }) => (
           <FormItem>
             <FormLabel>Nome do Arquivo (opcional)</FormLabel>
@@ -48,7 +48,7 @@ export function VideoFields() {
       />
       <FormField
         control={control}
-        name="duration"
+        name="video.duration"
         render={({ field }) => (
           <FormItem>
             <FormLabel>Duração em segundos (opcional)</FormLabel>
@@ -64,6 +64,7 @@ export function VideoFields() {
                     e.target.value ? Number(e.target.value) : undefined
                   )
                 }
+                value={field.value ?? ""}
               />
             </FormControl>
             <FormMessage />

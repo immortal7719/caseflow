@@ -16,7 +16,7 @@ export function TextFields() {
     <FormField
       control={control}
       defaultValue=""
-      name="content"
+      name="text.content"
       render={({ field }) => (
         <FormItem>
           <FormLabel>Conteúdo do Texto</FormLabel>

@@ -2,7 +2,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { Card, CardContent } from "@/core/components/ui/card";
 import { cn } from "@/core/lib/utils";
 import type { Clue } from "../../types/clue";
-import { ClueIcon } from "../clue-icon";
+import { ClueIcon } from "../clue-list/fragments/clue-icon";
 
 const cluePreviewVariants = cva("transition-all duration-200", {
   variants: {

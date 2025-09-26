@@ -17,7 +17,7 @@ export function ImageFields() {
       <FormField
         control={control}
         defaultValue=""
-        name="url"
+        name="image.url"
         render={({ field }) => (
           <FormItem>
             <FormLabel>URL da Imagem</FormLabel>
@@ -35,7 +35,7 @@ export function ImageFields() {
       <FormField
         control={control}
         defaultValue=""
-        name="alt"
+        name="image.alt"
         render={({ field }) => (
           <FormItem>
             <FormLabel>Texto Alternativo (opcional)</FormLabel>
@@ -49,7 +49,7 @@ export function ImageFields() {
       <FormField
         control={control}
         defaultValue=""
-        name="fileName"
+        name="image.fileName"
         render={({ field }) => (
           <FormItem>
             <FormLabel>Nome do Arquivo (opcional)</FormLabel>

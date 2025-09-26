@@ -1,5 +1,5 @@
 import { FileText, Image, Video, Volume2 } from "lucide-react";
-import type { Clue } from "../../types/clue";
+import type { Clue } from "@/modules/flow/types/clue";
 
 type ClueIconProps = {
   type: Clue["type"];

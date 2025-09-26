@@ -1,4 +1,4 @@
-import type { ComponentProps } from "react";
+import { type ComponentProps, memo } from "react";
 import { useDropPlaceholderModel } from "./drop-placeholder-model";
 import { DropPlaceholderView } from "./drop-placeholder-view";
 
@@ -8,7 +8,7 @@ type DropPlaceholderProps = Omit<
 > &
   Omit<ComponentProps<"div">, "onDrop" | "ref">;
 
-export function DropPlaceholder({
+function DropPlaceholderComponent({
   onDrop,
   groupId,
   insertIndex,
@@ -25,3 +25,10 @@ export function DropPlaceholder({
     />
   );
 }
+
+export const DropPlaceholder = memo(
+  DropPlaceholderComponent,
+  (prevProps, nextProps) =>
+    prevProps.groupId === nextProps.groupId &&
+    prevProps.insertIndex === nextProps.insertIndex
+);

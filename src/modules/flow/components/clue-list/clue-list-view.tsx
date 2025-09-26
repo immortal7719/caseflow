@@ -1,13 +1,13 @@
 import { Plus } from "lucide-react";
-import { type ComponentProps, Fragment } from "react";
+import { type ComponentProps, Fragment, memo } from "react";
 import { Button } from "@/core/components/ui/button";
 import { cn } from "@/core/lib/utils";
 import type { Clue } from "../../types/clue";
-import { ClueItem } from "../clue-item/clue-item";
-import { DropPlaceholder } from "../clue-item/fragments";
-import { DropZoneOverlay } from "../drop-zone-overlay";
 import { SaveClueButton } from "../save-clue-button";
 import type { useClueListModel } from "./clue-list-model";
+import { ClueItem } from "./fragments/clue-item";
+import { DropPlaceholder } from "./fragments/clue-item/fragments";
+import { DropZoneOverlay } from "./fragments/drop-zone-overlay";
 
 type ClueListViewProps = ReturnType<typeof useClueListModel> &
   ComponentProps<"section"> & {
@@ -15,7 +15,7 @@ type ClueListViewProps = ReturnType<typeof useClueListModel> &
     groupId: string;
   };
 
-export function ClueListView({
+function ClueListViewComponent({
   clues,
   groupId,
   emptyAreaRef,
@@ -98,3 +98,10 @@ export function ClueListView({
     </section>
   );
 }
+
+export const ClueListView = memo(
+  ClueListViewComponent,
+  (prevProps, nextProps) =>
+    prevProps.clues === nextProps.clues &&
+    prevProps.groupId === nextProps.groupId
+);

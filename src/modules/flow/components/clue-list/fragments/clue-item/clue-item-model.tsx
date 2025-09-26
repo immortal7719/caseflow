@@ -1,8 +1,8 @@
 import { useRef } from "react";
-import type { ClueItem } from "../../hooks/types";
-import { useDragClue } from "../../hooks/use-drag-clue";
-import { useDropClue } from "../../hooks/use-drop-clue";
-import type { Clue } from "../../types/clue";
+import type { ClueItem } from "@/modules/flow/hooks/types";
+import { useDragClue } from "@/modules/flow/hooks/use-drag-clue";
+import { useDropClue } from "@/modules/flow/hooks/use-drop-clue";
+import type { Clue } from "@/modules/flow/types/clue";
 
 type ClueItemModelProps = {
   clue: Clue;

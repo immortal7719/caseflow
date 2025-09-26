@@ -5,7 +5,7 @@ import { getId } from "@/modules/flow/utils/get-id";
 import type { GroupNodeData } from "../../nodes/group-node/types";
 import { type ClueFormData, clueFormSchema } from "../../schemas/clue-schema";
 import type { Clue } from "../../types/clue";
-import { getInitialValues } from "./clue-form.utils";
+import { extractClueData, getInitialValues } from "./clue-form.utils";
 
 type UseClueFormModelProps = {
   groupId: string;
@@ -32,23 +32,26 @@ export function useClueFormModel({
     const node = getNode(groupId);
 
     const nodeData = node?.data as GroupNodeData;
+    const extractedData = extractClueData(data);
 
     if (isEditing) {
       const updatedClue = {
         ...initialData,
-        ...data,
+        ...extractedData,
         updatedAt: new Date(),
       };
 
+      const updatedClues = nodeData.clues.map((clue) =>
+        clue.id === updatedClue.id ? updatedClue : clue
+      );
+
       updateNodeData(groupId, {
-        clues: nodeData.clues.map((clue) =>
-          clue.id === updatedClue.id ? updatedClue : clue
-        ),
+        clues: updatedClues,
       });
     } else {
       const newClue = {
         id: getId(),
-        ...data,
+        ...extractedData,
         order: nodeData.clues.length,
         createdAt: new Date(),
         updatedAt: new Date(),

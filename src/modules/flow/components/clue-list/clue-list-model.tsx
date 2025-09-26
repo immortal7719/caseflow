@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useCallback, useRef } from "react";
 import type { ClueItem as ClueItemType } from "../../hooks/types";
 import { useDropZone } from "../../hooks/use-drop-zone";
 import type { ReorderCluesParams } from "../../types/reorder";
@@ -20,34 +20,37 @@ export function useClueListModel({
 }: UseClueListModel) {
   const emptyAreaRef = useRef<HTMLDivElement>(null);
 
-  const handleItemDrop = (
-    draggedItem: ClueItemType,
-    targetItem: ClueItemType
-  ) => {
-    if (draggedItem.id === targetItem.id) {
-      return;
-    }
+  const handleItemDrop = useCallback(
+    (draggedItem: ClueItemType, targetItem: ClueItemType) => {
+      if (draggedItem.id === targetItem.id) {
+        return;
+      }
 
-    onReorderClues({
-      fromIndex: draggedItem.index,
-      toIndex: targetItem.index,
-      fromGroupId: draggedItem.groupId,
-      toGroupId: targetItem.groupId,
-    });
-  };
+      onReorderClues({
+        fromIndex: draggedItem.index,
+        toIndex: targetItem.index,
+        fromGroupId: draggedItem.groupId,
+        toGroupId: targetItem.groupId,
+      });
+    },
+    [onReorderClues]
+  );
 
-  const handlePlaceholderDrop = ({
-    draggedItem,
-    insertIndex,
-    groupId: targetGroupId,
-  }: HandlePlaceholderDropParams) => {
-    onReorderClues({
-      fromIndex: draggedItem.index,
-      toIndex: insertIndex,
-      fromGroupId: draggedItem.groupId,
-      toGroupId: targetGroupId,
-    });
-  };
+  const handlePlaceholderDrop = useCallback(
+    ({
+      draggedItem,
+      insertIndex,
+      groupId: targetGroupId,
+    }: HandlePlaceholderDropParams) => {
+      onReorderClues({
+        fromIndex: draggedItem.index,
+        toIndex: insertIndex,
+        fromGroupId: draggedItem.groupId,
+        toGroupId: targetGroupId,
+      });
+    },
+    [onReorderClues]
+  );
 
   const { isOver, canDrop, drop } = useDropZone(
     handlePlaceholderDrop,

@@ -23,7 +23,6 @@ import { getId } from "../../utils/get-id";
 import {
   type ClueReorderContext,
   moveCluesBetweenGroups,
-  reorderCluesWithinSameGroup,
   validateNodesAndClues,
 } from "./base-flow.utils";
 
@@ -36,7 +35,7 @@ export function useBaseFlowModel() {
   const flowRef = useRef<HTMLDivElement>(null);
 
   const { takeSnapshot } = useUndoRedo();
-  const { screenToFlowPosition } = useReactFlow();
+  const { screenToFlowPosition, updateNodeData } = useReactFlow();
 
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
@@ -83,36 +82,43 @@ export function useBaseFlowModel() {
     ({ fromIndex, toIndex, fromGroupId, toGroupId }: ReorderCluesParams) => {
       takeSnapshot();
 
-      setNodes((currentNodes) => {
-        const validation = validateNodesAndClues({
-          toGroupId,
-          fromIndex,
-          fromGroupId,
-          nodes: currentNodes,
-        });
+      const currentNodes = [...nodes];
+      const validation = validateNodesAndClues({
+        toGroupId,
+        fromIndex,
+        fromGroupId,
+        nodes: currentNodes,
+      });
 
-        if (!(validation.isValid && validation.fromNodeData)) {
-          return currentNodes;
-        }
+      if (!(validation.isValid && validation.fromNodeData)) {
+        return;
+      }
 
-        const movedClue = validation.fromNodeData.clues[fromIndex];
+      const movedClue = validation.fromNodeData.clues[fromIndex];
+
+      if (fromGroupId === toGroupId) {
+        const reorderedClues = [...validation.fromNodeData.clues];
+        reorderedClues.splice(fromIndex, 1);
+        reorderedClues.splice(toIndex, 0, movedClue);
+
+        updateNodeData(fromGroupId, { clues: reorderedClues });
+        return;
+      }
+
+      setNodes((prevNodes) => {
         const context: ClueReorderContext = {
           toIndex,
           fromIndex,
           toGroupId,
           movedClue,
           fromGroupId,
-          nodes: currentNodes,
+          nodes: prevNodes,
         };
-
-        if (fromGroupId === toGroupId) {
-          return reorderCluesWithinSameGroup(context, validation);
-        }
 
         return moveCluesBetweenGroups(context, validation);
       });
     },
-    [setNodes, takeSnapshot]
+    [setNodes, takeSnapshot, updateNodeData, nodes]
   );
 
   const onConnect: OnConnect = useCallback(

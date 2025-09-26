@@ -6,8 +6,10 @@ import type { Clue, ClueMediaType } from "../../types/clue";
 const FORM_DEFAULT_VALUES: ClueFormData = {
   type: "text",
   title: "",
-  content: "",
   description: "",
+  text: {
+    content: "",
+  },
 };
 
 export function getInitialValues(clue?: Clue): ClueFormData {
@@ -24,35 +26,84 @@ export function getInitialValues(clue?: Clue): ClueFormData {
     case "text":
       return {
         type: "text",
-        content: clue.content,
         ...baseData,
+        text: {
+          content: clue.content,
+        },
       };
     case "image":
       return {
         type: "image",
-        url: clue.url,
-        alt: clue.alt || "",
-        fileName: clue.fileName || "",
         ...baseData,
+        image: {
+          url: clue.url,
+          alt: clue.alt || "",
+          fileName: clue.fileName || "",
+        },
       };
     case "video":
       return {
         type: "video",
-        url: clue.url,
-        fileName: clue.fileName || "",
-        duration: clue.duration,
         ...baseData,
+        video: {
+          url: clue.url,
+          fileName: clue.fileName || "",
+          duration: clue.duration,
+        },
       };
     case "audio":
       return {
         type: "audio",
-        url: clue.url,
-        fileName: clue.fileName || "",
-        duration: clue.duration,
         ...baseData,
+        audio: {
+          url: clue.url,
+          fileName: clue.fileName || "",
+          duration: clue.duration,
+        },
       };
     default:
       return FORM_DEFAULT_VALUES;
+  }
+}
+
+export function extractClueData(data: ClueFormData) {
+  switch (data.type) {
+    case "text":
+      return {
+        type: data.type,
+        title: data.title,
+        description: data.description,
+        content: data.text.content,
+      };
+    case "image":
+      return {
+        type: data.type,
+        title: data.title,
+        description: data.description,
+        url: data.image.url,
+        alt: data.image.alt,
+        fileName: data.image.fileName,
+      };
+    case "video":
+      return {
+        type: data.type,
+        title: data.title,
+        description: data.description,
+        url: data.video.url,
+        fileName: data.video.fileName,
+        duration: data.video.duration,
+      };
+    case "audio":
+      return {
+        type: data.type,
+        title: data.title,
+        description: data.description,
+        url: data.audio.url,
+        fileName: data.audio.fileName,
+        duration: data.audio.duration,
+      };
+    default:
+      return data as never;
   }
 }
 

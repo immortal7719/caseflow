@@ -24,36 +24,46 @@ const imageClueFormSchema = z.object({
 const videoClueFormSchema = z.object({
   url: z.string().url("URL do vídeo inválida"),
   fileName: z.string().optional(),
-  duration: z.number().positive().optional(),
+  duration: z
+    .number()
+    .positive({ message: "Duração deve ser um número positivo" })
+    .optional(),
 });
 
 const audioClueFormSchema = z.object({
   url: z.string().url("URL do áudio inválida"),
   fileName: z.string().optional(),
-  duration: z.number().positive().optional(),
+  duration: z
+    .number()
+    .positive({ message: "Duração deve ser um número positivo" })
+    .optional(),
 });
 
 export const clueFormSchema = z.discriminatedUnion("type", [
-  z.object({
-    type: z.literal("text"),
-    ...baseClueFormSchema.shape,
-    ...textClueFormSchema.shape,
-  }),
-  z.object({
-    type: z.literal("image"),
-    ...baseClueFormSchema.shape,
-    ...imageClueFormSchema.shape,
-  }),
-  z.object({
-    type: z.literal("video"),
-    ...baseClueFormSchema.shape,
-    ...videoClueFormSchema.shape,
-  }),
-  z.object({
-    type: z.literal("audio"),
-    ...baseClueFormSchema.shape,
-    ...audioClueFormSchema.shape,
-  }),
+  z
+    .object({
+      type: z.literal("text"),
+      text: textClueFormSchema,
+    })
+    .merge(baseClueFormSchema),
+  z
+    .object({
+      type: z.literal("image"),
+      image: imageClueFormSchema,
+    })
+    .merge(baseClueFormSchema),
+  z
+    .object({
+      type: z.literal("video"),
+      video: videoClueFormSchema,
+    })
+    .merge(baseClueFormSchema),
+  z
+    .object({
+      type: z.literal("audio"),
+      audio: audioClueFormSchema,
+    })
+    .merge(baseClueFormSchema),
 ]);
 
 export type ClueFormData = z.infer<typeof clueFormSchema>;

@@ -6,23 +6,6 @@ import type { useClueDragLayerModel } from "./clue-drag-layer-model";
 
 type ClueDragLayerViewProps = ReturnType<typeof useClueDragLayerModel>;
 
-function ClueDragPreview({ item }: { item: ClueItem }) {
-  if (!item.clue) {
-    return (
-      <Card className="max-w-xs cursor-grabbing select-none shadow-lg">
-        <CardContent className="p-3">
-          <div className="flex items-center gap-2">
-            <FileText className="h-4 w-4" />
-            <span className="font-medium text-sm">Clue</span>
-          </div>
-        </CardContent>
-      </Card>
-    );
-  }
-
-  return <CluePreview clue={item.clue} variant="drag" />;
-}
-
 export function ClueDragLayerView({
   item,
   initialOffset,
@@ -41,4 +24,21 @@ export function ClueDragLayerView({
       </div>
     </div>
   );
+}
+
+function ClueDragPreview({ item }: { item: ClueItem }) {
+  if (!item.clue) {
+    return (
+      <Card className="max-w-xs cursor-grabbing select-none shadow-lg">
+        <CardContent className="p-3">
+          <div className="flex items-center gap-2">
+            <FileText className="h-4 w-4" />
+            <span className="font-medium text-sm">Clue</span>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
+
+  return <CluePreview clue={item.clue} variant="drag" />;
 }

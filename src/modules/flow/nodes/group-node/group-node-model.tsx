@@ -31,9 +31,12 @@ export function useGroupNodeModel({ id, data }: UseGroupNodeModel) {
     [handleGlobalReorderClues, data.clues, updateNodeData, id]
   );
 
-  const handleUpdateTitle = (newTitle: string) => {
-    updateNodeData(id, { title: newTitle });
-  };
+  const handleUpdateTitle = useCallback(
+    (newTitle: string) => {
+      updateNodeData(id, { title: newTitle });
+    },
+    [updateNodeData, id]
+  );
 
   return {
     id,
