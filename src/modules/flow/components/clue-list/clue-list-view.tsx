@@ -99,9 +99,4 @@ function ClueListViewComponent({
   );
 }
 
-export const ClueListView = memo(
-  ClueListViewComponent,
-  (prevProps, nextProps) =>
-    prevProps.clues === nextProps.clues &&
-    prevProps.groupId === nextProps.groupId
-);
+export const ClueListView = memo(ClueListViewComponent);
