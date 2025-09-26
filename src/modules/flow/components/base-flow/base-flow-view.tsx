@@ -14,6 +14,7 @@ export function BaseFlowView({
   onReconnect,
   onEdgesChange,
   onNodesChange,
+  onEdgesDelete,
   onNodeDragStart,
   onSelectionDragStart,
   handleGlobalReorderClues,
@@ -42,6 +43,7 @@ export function BaseFlowView({
           nodeTypes={nodeTypes}
           onConnect={onConnect}
           onEdgesChange={onEdgesChange}
+          onEdgesDelete={onEdgesDelete}
           onlyRenderVisibleElements={true}
           onNodeDragStart={onNodeDragStart}
           onNodesChange={onNodesChange}

@@ -3,6 +3,7 @@ import {
   type Edge,
   type Node,
   type OnConnect,
+  type OnEdgesDelete,
   type OnNodeDrag,
   type OnReconnect,
   reconnectEdge,
@@ -124,7 +125,7 @@ export function useBaseFlowModel() {
   const onConnect: OnConnect = useCallback(
     (params) => {
       takeSnapshot();
-      setEdges((edgesSnapshot) => addEdge(params, edgesSnapshot));
+      setEdges((prevEdges) => addEdge(params, prevEdges));
     },
     [setEdges, takeSnapshot]
   );
@@ -137,6 +138,11 @@ export function useBaseFlowModel() {
     [setEdges, takeSnapshot]
   );
 
+  const onEdgesDelete: OnEdgesDelete = useCallback(
+    (_params: Edge[]) => takeSnapshot(),
+    [takeSnapshot]
+  );
+
   return {
     nodes,
     edges,
@@ -145,6 +151,7 @@ export function useBaseFlowModel() {
     onReconnect,
     onEdgesChange,
     onNodesChange,
+    onEdgesDelete,
     onNodeDragStart,
     onSelectionDragStart,
     handleGlobalReorderClues,
