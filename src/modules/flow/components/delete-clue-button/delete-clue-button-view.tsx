@@ -22,7 +22,7 @@ export function DeleteClueButtonView({
     <AlertDialog>
       <AlertDialogTrigger asChild>
         <Button
-          className="h-6 w-6 text-destructive hover:text-destructive"
+          className="h-6 w-6 cursor-pointer text-destructive hover:text-destructive"
           size="icon"
           variant="ghost"
         >

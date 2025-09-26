@@ -26,7 +26,9 @@ export function SaveClueButtonView({
 }: SaveClueButtonViewProps) {
   return (
     <Dialog onOpenChange={setDialogIsOpen} open={dialogIsOpen}>
-      <DialogTrigger asChild>{children}</DialogTrigger>
+      <DialogTrigger asChild className="cursor-pointer">
+        {children}
+      </DialogTrigger>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
           <DialogTitle>

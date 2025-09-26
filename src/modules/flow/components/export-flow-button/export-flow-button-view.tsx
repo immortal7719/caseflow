@@ -10,7 +10,7 @@ export function ExportFlowButtonView({
   return (
     <Button
       aria-label="Exportar fluxo de investigação no formato JSON"
-      className="flex items-center gap-1 sm:gap-2"
+      className="flex cursor-pointer items-center gap-1 sm:gap-2"
       onClick={handleExportFlow}
       size="sm"
       variant="outline"

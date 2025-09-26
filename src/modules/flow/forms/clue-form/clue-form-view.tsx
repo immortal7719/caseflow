@@ -121,12 +121,12 @@ export function ClueFormView({
 
         <DialogFooter>
           <DialogClose asChild>
-            <Button type="button" variant="outline">
+            <Button className="cursor-pointer" type="button" variant="outline">
               Cancelar
             </Button>
           </DialogClose>
 
-          <Button type="submit">
+          <Button className="cursor-pointer" type="submit">
             {isEditing ? "Salvar Alterações" : "Adicionar Pista"}
           </Button>
         </DialogFooter>
