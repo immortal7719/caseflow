@@ -1,33 +1,36 @@
+import { cva, type VariantProps } from "class-variance-authority";
 import { Card, CardContent } from "@/core/components/ui/card";
+import { cn } from "@/core/lib/utils";
 import type { Clue } from "../../types/clue";
-import { ClueIcon } from "./clue-icon";
+import { ClueIcon } from "../clue-icon";
+
+const cluePreviewVariants = cva("transition-all duration-200", {
+  variants: {
+    variant: {
+      default: "",
+      preview: "rotate-2 scale-105 border-primary opacity-90 shadow-lg",
+      drag: "max-w-xs cursor-grabbing select-none shadow-lg",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
 
 type CluePreviewProps = {
   clue: Clue;
-  variant?: "default" | "preview" | "drag";
   className?: string;
   children?: React.ReactNode;
-};
+} & VariantProps<typeof cluePreviewVariants>;
 
 export function CluePreview({
   clue,
-  variant = "default",
-  className = "",
   children,
+  className,
+  variant,
 }: CluePreviewProps) {
-  const getCardClassName = () => {
-    switch (variant) {
-      case "preview":
-        return "rotate-2 scale-105 border-primary opacity-90 shadow-lg";
-      case "drag":
-        return "max-w-xs cursor-grabbing select-none shadow-lg";
-      default:
-        return "";
-    }
-  };
-
   return (
-    <Card className={`${getCardClassName()} ${className}`}>
+    <Card className={cn(cluePreviewVariants({ variant }), className)}>
       <CardContent className="space-y-2 p-3">
         <div className="flex min-w-0 flex-1 items-center gap-2">
           <ClueIcon type={clue.type} />

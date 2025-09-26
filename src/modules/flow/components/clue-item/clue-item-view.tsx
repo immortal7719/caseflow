@@ -3,11 +3,11 @@ import { memo } from "react";
 import { Button } from "@/core/components/ui/button";
 import { Card, CardContent } from "@/core/components/ui/card";
 import { cn } from "@/core/lib/utils";
+import { ClueIcon } from "../clue-icon";
+import { CluePreview } from "../clue-preview";
 import { DeleteClueButton } from "../delete-clue-button";
 import { DropZoneOverlay } from "../drop-zone-overlay";
 import { SaveClueButton } from "../save-clue-button";
-import { ClueIcon } from "../shared/clue-icon";
-import { CluePreview } from "../shared/clue-preview";
 import type { useClueItemModel } from "./clue-item-model";
 import { ClueContent } from "./fragments/clue-content";
 

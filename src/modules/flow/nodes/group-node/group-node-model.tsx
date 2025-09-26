@@ -1,6 +1,6 @@
 import { useReactFlow } from "@xyflow/react";
 import { useCallback } from "react";
-import { useClueReorder } from "../../contexts/clue-reorder-context";
+import { useClueReorder } from "../../hooks/use-clue-reorder";
 import type { ReorderCluesParams } from "../../types/reorder";
 import { arrayMove } from "../../utils/array-move";
 import type { GroupNodeData } from "./types";

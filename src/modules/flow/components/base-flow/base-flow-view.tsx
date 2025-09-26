@@ -1,7 +1,7 @@
 import { Background, BackgroundVariant, ReactFlow } from "@xyflow/react";
 import { ClueReorderProvider } from "../../contexts/clue-reorder-context";
-import { defaultEdgeOptions } from "../data/edges";
-import { nodeTypes } from "../data/nodes";
+import { defaultEdgeOptions } from "../../data/edges";
+import { nodeTypes } from "../../data/nodes";
 import type { useBaseFlowModel } from "./base-flow-model";
 
 type BaseFlowView = ReturnType<typeof useBaseFlowModel>;

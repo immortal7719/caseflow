@@ -1,7 +1,7 @@
 import { FileText } from "lucide-react";
 import { Card, CardContent } from "@/core/components/ui/card";
 import type { ClueItem } from "../../hooks/types";
-import { CluePreview } from "../shared/clue-preview";
+import { CluePreview } from "../clue-preview";
 import type { useClueDragLayerModel } from "./clue-drag-layer-model";
 
 type ClueDragLayerViewProps = ReturnType<typeof useClueDragLayerModel>;

@@ -1,4 +1,4 @@
-import { createContext, type ReactNode, useContext, useMemo } from "react";
+import { createContext, type ReactNode, useMemo } from "react";
 import type { ReorderCluesParams } from "../types/reorder";
 
 export type ClueReorderContextType = {
@@ -28,14 +28,4 @@ export function ClueReorderProvider({
       {children}
     </ClueReorderContext.Provider>
   );
-}
-
-export function useClueReorder() {
-  const context = useContext(ClueReorderContext);
-
-  if (!context) {
-    throw new Error("useClueReorder must be used within a ClueReorderProvider");
-  }
-
-  return context;
 }
