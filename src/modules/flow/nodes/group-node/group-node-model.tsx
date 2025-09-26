@@ -2,7 +2,6 @@ import { useReactFlow } from "@xyflow/react";
 import { useCallback } from "react";
 import { useClueReorder } from "../../hooks/use-clue-reorder";
 import type { ReorderCluesParams } from "../../types/reorder";
-import { arrayMove } from "../../utils/array-move";
 import type { GroupNodeData } from "./types";
 
 type UseGroupNodeModel = {
@@ -16,19 +15,14 @@ export function useGroupNodeModel({ id, data }: UseGroupNodeModel) {
 
   const handleReorderClues = useCallback(
     ({ fromIndex, toIndex, fromGroupId, toGroupId }: ReorderCluesParams) => {
-      if (fromGroupId && toGroupId) {
-        handleGlobalReorderClues({
-          fromIndex,
-          toIndex,
-          fromGroupId,
-          toGroupId,
-        });
-      } else {
-        const reorderedClues = arrayMove(data.clues || [], fromIndex, toIndex);
-        updateNodeData(id, { clues: reorderedClues });
-      }
+      handleGlobalReorderClues({
+        toIndex,
+        fromIndex,
+        toGroupId,
+        fromGroupId,
+      });
     },
-    [handleGlobalReorderClues, data.clues, updateNodeData, id]
+    [handleGlobalReorderClues]
   );
 
   const handleUpdateTitle = useCallback(
