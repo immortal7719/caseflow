@@ -18,23 +18,6 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      external: [
-        // Suprimir warnings de módulos Node.js externalizados
-        /^node:/,
-        /^fs$/,
-        /^path$/,
-        /^util$/,
-        /^os$/,
-        /^events$/,
-        /^stream$/,
-        /^crypto$/,
-        /^module$/,
-        /^worker_threads$/,
-        /^child_process$/,
-        /^tty$/,
-        /^assert$/,
-        /^url$/,
-      ],
       output: {
         manualChunks: {
           "radix-vendor": [

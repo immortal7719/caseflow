@@ -6,7 +6,6 @@ export type BaseClue = {
   description?: string;
   createdAt: Date;
   updatedAt: Date;
-  order: number;
 };
 
 export type TextClue = BaseClue & {
