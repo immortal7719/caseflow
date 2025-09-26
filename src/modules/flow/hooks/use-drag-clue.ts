@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { useDrag } from "react-dnd";
+import { getEmptyImage } from "react-dnd-html5-backend";
 import type { ClueItem, DragCollectedProps } from "./types";
 import { ItemTypes } from "./types";
 
@@ -14,6 +16,10 @@ export function useDragClue(item: ClueItem) {
       isDragging: monitor.isDragging(),
     }),
   });
+
+  useEffect(() => {
+    preview(getEmptyImage(), { captureDraggingState: true });
+  }, [preview]);
 
   return {
     drag,
