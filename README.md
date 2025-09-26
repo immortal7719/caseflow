@@ -1,5 +1,3 @@
-
-https://github.com/user-attachments/assets/aa93f14e-a3d9-4d95-ba03-0629bfb6aff2
 # 🔍 CaseFlow (English)
 
 Visual criminal investigation workflow tool that allows detectives to create and manipulate investigation flows in a visual analysis board. Built with modern React stack featuring drag-and-drop evidence management, multimedia clue support, and interactive case mapping.
@@ -338,4 +336,4 @@ O projeto usa ferramentas modernas de desenvolvimento:
 
 ## Video
 
-Uploading Gravação de Tela 2025-09-26 às 09.59.16.mov…
+https://github.com/user-attachments/assets/aa93f14e-a3d9-4d95-ba03-0629bfb6aff2
