@@ -1,3 +1,5 @@
+import type { Clue } from "../types/clue";
+
 export const ItemTypes = {
   clue: "clue",
   node: "node",
@@ -7,7 +9,7 @@ export type ClueItem = {
   id: string;
   index: number;
   groupId: string;
-  clue?: import("../types/clue").Clue;
+  clue?: Clue;
 };
 
 export type NodeItem = {
