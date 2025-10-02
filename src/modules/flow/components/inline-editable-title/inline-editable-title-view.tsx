@@ -28,6 +28,7 @@ export function InlineEditableTitleView({
       onChange={handleChange}
       onKeyDown={handleKeyDown}
       placeholder={placeholder}
+      ref={inputRef}
       value={editValue}
     />
   );
